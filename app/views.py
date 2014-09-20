@@ -89,7 +89,7 @@ def edit_course(id):
 		redirect('/')
 
 @route('/subjects')
-@jinja2_view('/subjects')
+@jinja2_view('/subjects.html')
 def list_subjects():
 	subjects = orm_session.query(Subject).order_by('-id')
 
