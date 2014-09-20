@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Courses system
+{% endblock %}
+
+{% block content %}
+    
+    <h2>新增课程</h2>
+	<form action="/new-course" method="post" id="post_new">
+		<p><input class="large" type="text" name="name" placeholder="名称" /></p>
+		<p><input type="submit" class="submit" value="添加" /></p>
+	</form>
+
+	</br>
+
+	<h2>已有课程</h2>
+	<table class="table table-striped table-bordered table-condensed table-hover">
+		<tr>
+			<th>课程名称</th>
+			<th>课程状态</th>
+			<th>操作</th>
+		</tr>
+  		{% for course in courses %}
+    	<tr>
+    		<td>{{ course.name }}</td>
+    		<td>	{% if course.active == True %}
+    					Active
+    				{% else %}
+    					Inactive
+    				{% endif %}
+    		</td>
+    		<td><a href="/edit-course/{{course.id}}">编辑</a>
+				<a href="/delete/{{course.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
+			</td>
+    	</tr>
+    	{% endfor %}
+	</table>
+	
+{% endblock %}
