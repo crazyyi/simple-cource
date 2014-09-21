@@ -115,7 +115,24 @@ def delete_subject(id):
 		orm_session.commit()
 	else:
 		message.error("Failed!")
-		redirect('/subjects')
+	
+	redirect('/subjects')
+
+@route('/new-subject', method='POST')
+def new_subject():
+	subject_name = request.forms.get("name").decode("utf-8")
+	duration = request.forms.get("duration").decode("utf-8")
+	tier = request.forms.get("tier").decode("utf-8")
+
+	if len(subject_name) >0 and len(duration) > 0 and tier:
+		subject = Subject(name=subject_name, duration=duration, tier=tier)
+		orm_session.add(subject)
+		orm_session.commit()
+		message.success("successful!")
+	else:
+		message.error("Failed!")
+	
+	redirect('/subjects')
 
 @route('/students')
 @jinja2_view('students.html')
@@ -172,11 +189,16 @@ def new_teacher():
 	firstname = request.forms.get("firstname").decode("utf-8")
 	lastname = request.forms.get("lastname").decode("utf-8")
 	birthdate = request.forms.get("birthdate").decode("utf-8")
-	birthdate = datetime.datetime.strptime(birthdate, "%Y-%m-%d")
+
+	if len(birthdate) > 0:
+		birthdate = datetime.datetime.strptime(birthdate, "%Y-%m-%d")
+	else:
+		message.error("Birth date should not be empty.")
+
 	nationality = request.forms.get("nationality").decode("utf-8")
 	visa_status = request.forms.get("visa_status").decode("utf-8")
 	salary_per_hour = request.forms.get("salary_per_hour").decode("utf-8")
-	if len(firstname) > 0 and len(lastname) > 0:
+	if len(firstname) > 0 and len(lastname) > 0 and birthdate is not None:
 		record = Teacher(firstname=firstname, lastname=lastname, \
 			birthdate=birthdate, nationality=nationality, visa_status=visa_status, \
 			salary_per_hour = salary_per_hour, active=True)
