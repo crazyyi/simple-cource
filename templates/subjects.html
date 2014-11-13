@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% set active_page = "subjects" %}
 {% block title %}
 	Subject page
 {% endblock %}
@@ -30,7 +30,7 @@
     		<td>{{ subject.name }}</td>
     		<td>{{ subject.duration }}</td>	
     		<td>{{ subject.tier }}</td>
-    		<td><a href="/edit/{{subject.id}}">编辑</a>
+    		<td><a href="/edit-subject/{{subject.id}}">编辑</a>
 				<a href="/delete-subject/{{subject.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
 			</td>
     	</tr>

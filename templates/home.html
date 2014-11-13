@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% set active_page = "courses" %}
 {% block title %}
 	Courses system
 {% endblock %}
@@ -31,7 +31,7 @@
     				{% endif %}
     		</td>
     		<td><a href="/edit-course/{{course.id}}">编辑</a>
-				<a href="/delete/{{course.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
+				<a href="/delete-course/{{course.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
 			</td>
     	</tr>
     	{% endfor %}

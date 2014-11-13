@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% set active_page = "students" %}
 {% block title %}
 	Student page
 {% endblock %}
@@ -11,6 +11,8 @@
 	<form action="/new-student" method="post" id="post_new">
 		<p><input class="large" type="text" name="firstname" placeholder="名字" /></p>
 		<p><input class="large" type="text" name="lastname" placeholder="姓" /></p>
+		<p><input class="large" type="date" name="birthdate" placeholder="生日" /></p>
+		<p><input class="large" type="text" name="level" placeholder="水平等级" /></p>
 		<p><label>缴费</label><input type="checkbox" name="paid" class="checkbox" /></p>
 		<p><input type="submit" class="submit" value="添加" /></p>
 	</form>
@@ -37,7 +39,7 @@
     				course.name
     			{% endfor %}
     		</td>
-    		<td><a href="/edit/{{student.id}}">编辑</a>
+    		<td><a href="/edit-student/{{student.id}}">编辑</a>
 				<a href="/delete-student/{{student.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
 			</td>
     	</tr>

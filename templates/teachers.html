@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% set active_page = "teachers" %}
 {% block title %}
 	Teacher page
 {% endblock %}
@@ -37,7 +37,7 @@
     		<td>{{ teacher.visa_status}}</td>
     		<td>{{ teacher.nationality}}</td>
     		<td>{{ teacher.salary_per_hour}}</td>
-    		<td><a href="/edit/{{teacher.id}}">编辑</a>
+    		<td><a href="/edit-teacher/{{teacher.id}}">编辑</a>
 				<a href="/delete-teacher/{{teacher.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
 			</td>
     	</tr>
