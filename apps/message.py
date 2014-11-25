@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import request
+from flask import request
 import pprint
 # Flush message control
 
 pp = pprint.PrettyPrinter(indent=2)
 
 def set_message(status, message):
-	#pp.pprint(request.environ)  #print out the object
+	pp.pprint(request.environ)  #print out the object
 	session = request.environ['beaker.session']
 	session[status] = message
 	session.save()

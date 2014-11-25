@@ -14,4 +14,3 @@ Simple Course is the next generation course ~ teacher ~ student management syste
 
 
 ## to-do
-*	change all forms to use a label inside an input

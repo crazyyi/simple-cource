@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% set active_page = "teachers" %}
+{% block title %}
+	Teacher page
+{% endblock %}
+
+{% block content %}
+    
+    <h2>新增老师</h2>
+    <p></p>
+	<form action="/new-teacher" method="post" id="post_new">
+		<p><input class="large" type="text" name="firstname" placeholder="名字" /></p>
+		<p><input class="large" type="text" name="lastname" placeholder="姓" /></p>
+		<p><input class="large" type="date" name="birthdate" placeholder="生日" /></p>
+		<p><input class="large" type="text" name="nationality" placeholder="国籍" /></p>
+		<p><input class="large" type="text" name="visa_status" placeholder="签证情况" /></p>
+		<p><input class="large" type="text" name="salary_per_hour" placeholder="时薪" /></p>
+		<p><input type="submit" class="submit" value="添加" /></p>
+	</form>
+
+	</br>
+
+	<h2>现有老师</h2>
+	<table class="table table-striped table-bordered table-condensed table-hover">
+		<tr>
+			<th>名字</th>
+			<th>生日</th>
+			<th>签证情况</th>
+			<th>国籍</th>
+			<th>时薪</th>
+			<th>操作</th>
+		</tr>
+  		{% for teacher in teachers %}
+    	<tr>
+    		<td>{{ teacher.lastname ~ teacher.firstname }}</td>
+    		<td>{{ teacher.birthdate}}</td>	
+    		<td>{{ teacher.visa_status}}</td>
+    		<td>{{ teacher.nationality}}</td>
+    		<td>{{ teacher.salary_per_hour}}</td>
+    		<td><a href="{{ url_for('views.edit_teacher', id=teacher.id) }}">编辑</a>
+				<a href="/delete-teacher/{{teacher.id}}" onclick="return confirm('删除后不能还原，你确定吗?')">刪除</a>
+			</td>
+    	</tr>
+    	{% endfor %}
+	</table>
+	
+{% endblock %}

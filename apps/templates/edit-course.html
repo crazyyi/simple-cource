@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+	Edit Course
+{% endblock %}
+
+{% block content %}
+	<form action="{{ url_for('views.update_course', id=course.id) }}" method="post" id="post_new">
+	<table class="table table-striped table-bordered table-condensed table-hover">
+		<p><input type="hidden" value="{{ course.id }}"></input></p>
+		<tr>
+			<th>项目</th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>课程名称</td>
+			<td><input class="large" type="text" name="name" placeholder="{{ course.name }}" /></td>
+		</tr>
+		<tr>
+			<td>科目</td>
+			<td>
+				{% for subject in course.subject %}
+					<p><input type="checkbox" name="{{ subject.name }}" class="checkbox" /><label>{{ subject.name }}</label></p>
+				{% endfor %}
+			</td>
+			
+		</tr>
+		<tr>
+			<td>{% for student in course.students %}
+					student.lastname ~ student.firstname
+				{% endfor %}
+			</td>
+			
+		</tr>
+
+	</table>
+	<p><input type="submit" class="submit" value="保存" /></p>
+	</form>
+{% endblock %}

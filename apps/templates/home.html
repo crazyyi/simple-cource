@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+{% block title %}
+	Courses system
+{% endblock %}
+
+{% block content %}
+	{% if not g.user.is_authenticated()%}
+		<span class="btn btn-default btn-lg"><a href="{{ url_for('auth.login') }}">Login</a></span></li>
+		<span class="btn btn-default btn-lg"><a href="{{ url_for('auth.signup') }}">Signup now!</a></span>
+	{% endif %}
+	
+	
+{% endblock %}

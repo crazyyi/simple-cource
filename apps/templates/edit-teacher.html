@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Edit Teacher
+{% endblock %}
+
+{% block content %}
+	<form action="{{ url_for('views.update_teacher', id=teacher.id) }}" method="post" id="post_new">
+		<table class="table table-striped table-bordered table-condensed table-hover">
+			<tr>
+				<th>属性</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>名字</td>
+				<td><input type="text" name="firstname" class="long_txt" placeholder="{{ teacher.firstname }}"/></td>
+			</tr>
+			<tr>
+				<td>姓</td>
+				<td><input type="text" name="lastname" class="long_txt" placeholder="{{ teacher.lastname }}"/></td>
+			</tr>
+			<tr>
+				<td>出生日期</td>
+				<td><input type="text" name="birthdate" class="long_txt" placeholder="{{ teacher.birthdate }}"/></td>
+			
+			</tr>
+			<tr>
+				<td>国籍</td>
+				<td><input class="large" type="text" name="nationality" placeholder="国籍" /></td>
+			</tr>
+			<tr>
+				<td>签证情况</td>
+				<td><input class="large" type="text" name="visa_status" placeholder="签证情况" /></td>
+			</tr>
+			<tr>
+				<td>时薪</td>
+				<td><input class="large" type="text" name="salary_per_hour" placeholder="时薪" /></td>
+			</tr>
+		</table>
+		<p><input type="submit" class="submit" value="保存" /></p>
+	</form>
+{% endblock %}

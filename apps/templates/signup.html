@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}{{page_title}}{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8 well" style="background-color: #ffffff">
+    <!--<div class="container">-->
+      <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8" >
+          <form action="{{url_for('auth.signup')}}" class="form" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="heading">
+              <h4 class="form-heading">Welcome to Course System.</h4>
+            </div>
+            <div class="form-group {% if form.email.errors %} has-error {% endif %}">
+              {{form.email.label()}}
+              <div>
+                {{ form.email(placeholder="E.g. brucewayne@wayne.com", class="form-control") }} 
+              </div>
+              <p class="help-block">
+                {{ form.email.errors[0] }}
+
+              </div>
+              <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                {{form.password.label()}}
+                <div>
+                  {{ form.password(placeholder="Min. 6 Characters", class="form-control") }}
+                </div>
+                <p class="help-block">
+                  {{ form.password.errors[0] }}
+
+              </div>
+              <div class="form-group {% if form.confirm.errors %} has-error {% endif %}">
+                {{form.confirm.label()}}
+                <div>
+                  {{ form.confirm(placeholder="Min. 6 Characters", class="form-control") }}
+                </div>
+                <p class="help-block">
+                  {{ form.confirm.errors[0] }}
+
+              </div>
+              <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                  {{form.username.label()}}
+                  <div>
+                    {{form.username(placeholder="E.g. vhd1001", class="form-control")}}
+                  </div>
+                  <p class="help-block">
+                    {{ form.username.errors[0] }}
+
+              </div>
+              <div class="form-group {% if form.agree.errors %} has-error {% endif %}">
+                    <label class="checkbox">
+                      {{form.agree}} {{form.agree.label}}
+                    </label>
+                    <p class="help-block">
+                      {{ form.agree.errors[0] }}
+
+              </div>    
+            <button class="btn btn-success" type="submit">Sign Up</button>
+          </form>
+        </div>
+        <div class="col-sm-2">
+        </div>
+      </div>
+    <!--</div>-->
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+{% endblock %}

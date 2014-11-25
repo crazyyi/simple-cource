@@ -1,0 +1,9 @@
+Flask==0.10.1
+Flask-SQLAlchemy==1.0
+Flask-WTF==0.10.3
+Flask-Login==0.2.11
+backports.pbkdf2==0.1
+unittest2==0.8.0
+nose==1.3.4
+Flask-Migrate
+Flask-script
